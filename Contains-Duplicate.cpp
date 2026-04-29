@@ -1,18 +1,15 @@
-1class Solution {
-2public:
-3    bool containsDuplicate(vector<int>& nums) {
-4        unordered_map<int, int> mp;
-5
-6        for(int i = 0; i < nums.size(); i++) {
-7            mp[nums[i]]++;
-8        }
-9
-10        for(auto i : mp) {
-11            if(i.second >= 2) {
-12                return true;
-13            }
-14        }
-15
-16        return false;
-17    }
-18};
+1#include <algorithm>
+2using namespace std;
+3
+4class Solution {
+5public:
+6    bool containsDuplicate(vector<int>& nums) {
+7        sort(nums.begin(), nums.end());
+8        for (int i = 0; i < nums.size() - 1; i++) {
+9            if (nums[i] == nums[i + 1]) {
+10                return true;
+11            }
+12        }
+13        return false;
+14    }
+15};
